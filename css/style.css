@@ -1267,6 +1267,8 @@ button {
 .mainvisual__img {
   width: 100%;
   height: 100%;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2801,20 +2803,21 @@ button {
   position: relative;
   width: 100%;
   overflow: hidden;
+  z-index: 10;
   -webkit-filter: drop-shadow(-4px 4px 4px rgba(0, 0, 0, 0.2));
           filter: drop-shadow(-4px 4px 4px rgba(0, 0, 0, 0.2));
-}
-
-@media (min-width: 768px) {
-  .recruit__img-wrapper {
-    max-width: 320px;
-  }
 }
 
 .recruit__img-wrapper::after {
   display: block;
   padding-top: 200%;
   content: "";
+}
+
+@media (min-width: 768px) {
+  .recruit__img-wrapper {
+    max-width: 320px;
+  }
 }
 
 .recruit__img-border {
