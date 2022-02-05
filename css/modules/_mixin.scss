@@ -1,0 +1,93 @@
+@mixin lhCrop($line-height: $base-line-height, $capital-letter: 1) {
+  overflow: hidden; //相殺した余白をカット
+  &::before {
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+  }
+  &::after {
+    //最終行も取り除く
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    margin-top: calc((#{$capital-letter} - #{$line-height}) * 0.5em);
+  }
+}
+
+@keyframes kf-mainvisual {
+  0% {
+    transform: scale(1.2);
+    opacity: .3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes kf-cover-slide {
+  0% {
+    left: 0;
+    right: 100%;
+  }
+  50% {
+    left: 0;
+    right: 0;
+  }
+  100% {
+    left: 100%;
+    right: 0;
+  }
+}
+
+@keyframes kf-border-slide {
+  0% {
+    left: 0;
+    right: 100%;
+  }
+  100% {
+    left: 0;
+    right: 0;
+  }
+}
+
+@keyframes kf-title-up {
+  0% {
+    transform: translateY(30%);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes kf-content-slide {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  50.1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@mixin mq($breakpoint) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin rc() {
+  @media print, (prefers-reduced-motion: reduce) {
+    @content
+  }
+}
