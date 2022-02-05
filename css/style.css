@@ -2355,6 +2355,10 @@ button {
   background-color: #fff;
 }
 
+.case__item:not(:first-of-type) {
+  margin-top: 24px;
+}
+
 @media (min-width: 768px) {
   .case__item {
     margin: 0;
@@ -2362,10 +2366,6 @@ button {
   .case__item:not(:first-of-type) {
     margin: 0;
   }
-}
-
-.case__item:not(:first-of-type) {
-  margin-top: 24px;
 }
 
 .case__item-link:hover .case__item-img {
