@@ -2012,9 +2012,10 @@ button {
   & .md-button-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 64px;
-
+    margin-top: 40px;
+    
     @include mq(md) {
+      margin-top: 64px;
       justify-content: flex-end;
     }
   }
