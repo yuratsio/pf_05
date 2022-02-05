@@ -1,0 +1,27 @@
+.js-fade-in {
+  & > .fade-in-item {
+    transform: translate(-8px, 8px);
+    transition: transform 0.5s ease;
+  }
+  &.section-tag {
+    & > .fade-in-item {
+      transform: translate(-4px, 4px);
+    }
+  }
+  &--active {
+    & > .fade-in-item {
+      transform: none;
+
+      @for $i from 1 through 10 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.2s;
+        }
+      }
+    }
+    &.section-tag {
+      & > .fade-in-item {
+        transform: none;
+      }
+    }
+  }
+}
