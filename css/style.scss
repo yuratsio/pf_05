@@ -1423,14 +1423,14 @@ button {
     overflow: hidden;
     border-radius: 4px;
     background-color: $white;
+    &:not(:first-of-type) {
+      margin-top: 24px;
+    }
     @include mq(md) {
       margin: 0;
       &:not(:first-of-type) {
         margin: 0;
       }
-    }
-    &:not(:first-of-type) {
-      margin-top: 24px;
     }
   }
   &__item-link {
