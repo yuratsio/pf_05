@@ -829,6 +829,7 @@ button {
   }
   & .md-button {
     width: 100%;
+    border: solid 1px $white;
 
     @include mq(md) {
       width: auto;
