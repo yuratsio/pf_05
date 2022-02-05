@@ -235,8 +235,8 @@ button {
   visibility: hidden;
   opacity: 0;
   position: fixed;
-  right: 10px;
-  bottom: 10px;
+  right: 20px;
+  bottom: 20px;
   z-index: 50;
   transform: translateY(20%);
   width: 40px;
@@ -251,8 +251,6 @@ button {
       opacity 0.5s, visibility 0.5s !important;
   }
   @include mq(md) {
-    right: 20px;
-    bottom: 20px;
     width: 60px;
     height: 60px;
   }
@@ -601,10 +599,10 @@ button {
     width: 24px;
     height: 2px;
     background-color: $fontblack;
-    transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.3s,
+    transition: transform 0.3s ease, opacity 0.3s,
       background-color 0.3s;
     @include rc() {
-      transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+      transition: transform 0.3s ease,
         opacity 0.3s, background-color 0.3s !important;
     }
     &::before,
@@ -614,10 +612,10 @@ button {
       height: 2px;
       background-color: $fontblack;
       content: "";
-      transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+      transition: transform 0.3s ease,
         opacity 0.3s, background-color 0.3s;
       @include rc() {
-        transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+        transition: transform 0.3s ease,
           opacity 0.3s, background-color 0.3s !important;
       }
     }
@@ -674,7 +672,7 @@ button {
   position: relative;
   height: 800px;
   min-height: 560px;
-  max-height: 80vh;
+  max-height: 60vh;
 
   @include mq(md) {
     max-height: 70vh;
@@ -809,16 +807,17 @@ button {
     font-weight: 500;
     font-size: 1.4rem;
     text-align: left;
-
+    $drop-shadow: 0 2px 2px rgba(0, 0, 0, 1);
     @include mq(xs) {
       font-size: 1.2rem;
     }
-
+    @include mq(md) {
+      filter: drop-shadow($drop-shadow);
+    }    
     @include mq(lg) {
       font-size: 1.6rem;
     }
 
-    filter: drop-shadow($drop-shadow);
   }
   & .md-button-wrapper {
     width: 100%;
@@ -2198,6 +2197,15 @@ button {
   &__text-wrapper {
     position: relative;
     padding: 0 4% 32px;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: calc(-4% - 2px);
+      width: 100vw;
+      height: 32px;
+      background-color: $lightgray;
+      content: "";
+    }
     @include mq(md) {
       flex-basis: 50%;
       max-width: 50%;
@@ -2207,18 +2215,8 @@ button {
         content: none;
       }
     }
-
     @include mq(xxl) {
       padding: 0;
-    }
-    &::after {
-      position: absolute;
-      bottom: 0;
-      left: calc(-4% - 2px);
-      width: 100vw;
-      height: 32px;
-      background-color: $lightgray;
-      content: "";
     }
   }
   &__text {
