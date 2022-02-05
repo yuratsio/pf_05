@@ -1675,6 +1675,10 @@ button {
       display: block;
       margin: 0 auto;
       background-color: $darkgray;
+      border: solid 1px $mainred;
+      &::before {
+        background-color: $white;
+      }
       @include mq(md) {
         margin: 24px auto 0;
       }
@@ -1682,12 +1686,12 @@ button {
         width: 320px;
         height: 64px;
         font-size: 1.6rem;
-
+        transition: color .3s;
+        background-color: $mainred;
         @include mq(md) {
           width: 400px;
           font-size: 2rem;
         }
-
         @include mq(lg) {
           width: 480px;
           height: 80px;
@@ -1702,6 +1706,16 @@ button {
           @include mq(md) {
             width: 12px;
             height: 12px;
+          }
+        }
+      }
+      &:hover {
+        & .md-button-link {
+          color: $mainred;
+        }
+        & .link-arrow {
+          &::after {
+            border-color: $mainred;
           }
         }
       }
