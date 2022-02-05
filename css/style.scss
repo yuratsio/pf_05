@@ -1163,6 +1163,14 @@ button {
         }
       }
     }
+    &:hover {
+      & .service__item-title {
+        &::after {
+          border-color: $mainred;
+          transform: translateX(8px) rotate(-45deg);
+        }
+      }
+    }
   }
   &__item-title {
     display: flex;
@@ -1225,9 +1233,9 @@ button {
       border-right: solid 2px $white;
       border-bottom: solid 2px $white;
       content: "";
-      transition: border-color 0.3s;
+      transition: transform 0.3s, border-color 0.3s;
       @include rc() {
-        transition: border-color 0.3s !important;
+        transition: transform 0.3s, border-color 0.3s !important;
       }
       @include mq(md) {
         width: 12px;
