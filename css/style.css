@@ -1464,6 +1464,7 @@ button {
 
 .maincopy .md-button {
   width: 100%;
+  border: solid 1px #fff;
 }
 
 @media (min-width: 768px) {
