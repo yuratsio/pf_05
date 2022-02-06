@@ -221,7 +221,7 @@ button {
     opacity: 1;
     & > * {
       animation-name: kf-content-slide;
-      animation-duration: 1.2s;
+      animation-duration: 1s;
       animation-timing-function: ease-in-out;
     }
     &::after {
@@ -231,7 +231,7 @@ button {
       background-color: $mainred;
       content: "";
       animation-name: kf-cover-slide;
-      animation-duration: 1.2s;
+      animation-duration: 1s;
       animation-timing-function: ease-in-out;
     }
   }
@@ -902,7 +902,7 @@ button {
     top: 40px;
     right: 0;
     z-index: -1;
-    width: 55%;
+    width: 57%;
     @include mq(md) {
       width: 42%;
     }
@@ -952,7 +952,6 @@ button {
     }
 
     object-fit: cover;
-    filter: drop-shadow(-4px 4px 8px rgba(0, 0, 0, 0.3));
   }
   & .md-button-wrapper {
     display: flex;
@@ -1845,7 +1844,6 @@ button {
     width: 100%;
     overflow: hidden;
     z-index: 10;
-    filter: drop-shadow(-4px 4px 4px rgba(0, 0, 0, 0.2));
     &::before {
       display: block;
       padding-top: 200%;
