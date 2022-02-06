@@ -484,8 +484,8 @@ button {
 .cover-slide--active > * {
   -webkit-animation-name: kf-content-slide;
           animation-name: kf-content-slide;
-  -webkit-animation-duration: 1.2s;
-          animation-duration: 1.2s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
 }
@@ -498,8 +498,8 @@ button {
   content: "";
   -webkit-animation-name: kf-cover-slide;
           animation-name: kf-cover-slide;
-  -webkit-animation-duration: 1.2s;
-          animation-duration: 1.2s;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
   -webkit-animation-timing-function: ease-in-out;
           animation-timing-function: ease-in-out;
 }
@@ -1580,8 +1580,6 @@ button {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  -webkit-filter: drop-shadow(-4px 4px 8px rgba(0, 0, 0, 0.3));
-          filter: drop-shadow(-4px 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 @media (min-width: 1024px) {
@@ -2895,8 +2893,6 @@ button {
   width: 100%;
   overflow: hidden;
   z-index: 10;
-  -webkit-filter: drop-shadow(-4px 4px 4px rgba(0, 0, 0, 0.2));
-          filter: drop-shadow(-4px 4px 4px rgba(0, 0, 0, 0.2));
 }
 
 .recruit__img-wrapper::before {
