@@ -56,28 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
       behavior: "smooth",
     });
   });
-  // =============================
-  // fade-in
-  // =============================
-  const fadeInTargets = document.querySelectorAll('.js-fade-in');
-  const fadeInOptions = {
-    threshold: .2,
-  }
-  const fadeInObs = new IntersectionObserver(fadeIn, fadeInOptions);
-
-  fadeInTargets.forEach(fadeInTarget => {
-    fadeInObs.observe(fadeInTarget);
-  });
-
-  function fadeIn(entries, obs) {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) {
-        return;
-      }
-      entry.target.classList.add('js-fade-in--active');
-      obs.unobserve(entry.target);
-    });
-  }
 
   // =============================
   // animation
@@ -96,11 +74,36 @@ window.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if(!entry.isIntersecting) {
         return;
-      }
+      };
       entry.target.classList.add('animation--active');
       obs.unobserve(entry.target);
     });
   }
+
+  // =============================
+  // cover slide
+  // =============================
+  const coverSlideTargets = document.querySelectorAll('.cover-slide');
+  const coverSlideOptions = {
+    threshold: .6,
+  };
+  const coverSlideObs = new IntersectionObserver(coverSlide, coverSlideOptions);
+
+  coverSlideTargets.forEach(coverSlideTarget =>{
+    coverSlideObs.observe(coverSlideTarget);
+  });
+
+  function coverSlide(entries,obs) {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) {
+        return;
+      };
+      entry.target.classList.add('cover-slide--active');
+      obs.unobserve(entry.target);
+    });
+
+  };
+  
 
   // =============================
   // resize
