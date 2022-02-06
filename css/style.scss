@@ -29,6 +29,9 @@ button {
   max-width: 100%;
   margin: 0 auto;
   padding: 0 4%;
+  @include mq(xxl) {
+    padding: 0 100px;
+  } 
 }
 .md-button-wrapper {
   margin-top: 40px;
@@ -955,10 +958,9 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 48px;
-
+    
     @include mq(lg) {
       justify-content: flex-start;
-      margin-top: 32px;
     }
   }
 }
@@ -1354,7 +1356,7 @@ button {
     padding-left: 1%;
 
     @include mq(xxl) {
-      padding-left: 4%;
+      padding-left: 100px;
     }
   }
   &__inner {
