@@ -1343,8 +1343,8 @@ button {
 }
 
 .maincopy__title .underline-red.letter-spacing::before {
-  -webkit-transform: translateX(6px);
-          transform: translateX(6px);
+  -webkit-transform: translateX(4px);
+          transform: translateX(4px);
 }
 
 .maincopy__title .underline-red::before {
