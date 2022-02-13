@@ -325,10 +325,16 @@ button {
 .section-tag::before {
   display: block;
   width: 40px;
-  height: 2px;
+  height: 1px;
   margin-right: 8px;
   background-color: #f2293a;
   content: "";
+}
+
+@media (min-width: 768px) {
+  .section-tag::before {
+    height: 2px;
+  }
 }
 
 .section-title {
