@@ -1545,7 +1545,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: 64px;
+  height: 56px;
   background-color: #fff;
   content: "";
 }
@@ -2112,7 +2112,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: 64px;
+  height: 56px;
   background-color: #fff;
   content: "";
 }
@@ -2488,7 +2488,7 @@ button {
   left: 0;
   z-index: 5;
   width: 101%;
-  height: 64px;
+  height: 56px;
   background-color: #fff;
   content: "";
 }
@@ -3420,7 +3420,7 @@ button {
   left: 0;
   z-index: 1;
   width: 100%;
-  height: 64px;
+  height: 56px;
   background-color: #fff;
   content: "";
 }
