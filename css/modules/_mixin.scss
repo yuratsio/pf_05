@@ -17,17 +17,6 @@
   }
 }
 
-@keyframes kf-mainvisual {
-  0% {
-    transform: scale(1.2);
-    opacity: .3;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 @mixin mq($breakpoint) {
   @media #{map-get($breakpoints, $breakpoint)} {
     @content;
