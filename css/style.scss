@@ -1,6 +1,7 @@
 @import "modules/variables";
 @import "modules/breakpoints";
 @import "modules/mixin";
+@import "modules/fade-in";
 
 // =============================
 // common
@@ -25,13 +26,14 @@ button {
   cursor: pointer;
 }
 .wrapper {
-  width: 1440px;
+  width: 1640px;
   max-width: 100%;
   margin: 0 auto;
   padding: 0 4%;
+
   @include mq(xxl) {
     padding: 0 100px;
-  } 
+  }
 }
 .md-button-wrapper {
   margin-top: 40px;
@@ -58,9 +60,13 @@ button {
   color: $white;
   font-weight: bold;
   font-size: 1.6rem;
+
   @include mq(md) {
-    width: 320px;
     max-width: none;
+  }
+
+  @include mq(lg) {
+    width: 320px;
   }
 
   @include mq(lg) {
@@ -74,8 +80,8 @@ button {
   @include mq(md) {
     padding-right: 16px;
   }
-
   backface-visibility: hidden;
+
   &::after {
     position: absolute;
     top: 50%;
@@ -87,6 +93,7 @@ button {
     border-bottom: solid 2px $white;
     content: "";
     transition: border-color 0.3s, transform 0.3s;
+
     @include rc() {
       transition: border-color 0.3s, transform 0.3s !important;
     }
@@ -110,10 +117,11 @@ button {
     background-color: $mainred;
     content: "";
     transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98);
-    transform-origin: right;
     @include rc() {
       transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98) !important;
     }
+
+    transform-origin: right;
   }
   &:hover {
     &::before {
@@ -130,46 +138,36 @@ button {
   }
 }
 .section-tag {
-  position: relative;
-  width: 80px;
-  height: 20px;
-  color: $white;
-  font-weight: bold;
-  font-size: 1rem;
   display: inline-block;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  width: 100px;
-  background-color: $mainred;
+  position: relative;
+  color: $white;
+  color: $mainred;
+  font-weight: bold;
+  font-size: 1rem;
   @include mq(md) {
-    width: 100px;
     font-size: 1.2rem;
   }
 
   @include mq(lg) {
-    width: 120px;
-    height: 24px;
     font-size: 1.4rem;
   }
   &::before {
-    position: absolute;
-    bottom: -4px;
-    left: -4px;
-    z-index: -1;
-    width: 100%;
-    height: 20px;
-    border: solid 1px $mainred;
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin-right: 8px;
+    background-color: $mainred;
     content: "";
-    @include mq(lg) {
-      height: 24px;
-    }
   }
 }
 .section-title {
   margin-top: 16px;
   font-weight: bold;
   font-size: 3.6rem;
+
   @include lhCrop;
 
   @include mq(md) {
@@ -185,7 +183,9 @@ button {
   margin-top: 32px;
   font-weight: bold;
   font-size: 2.4rem;
+
   @include lhCrop;
+
   @include mq(xs) {
     font-size: 1.6rem;
   }
@@ -202,38 +202,9 @@ button {
     margin-top: 24px;
     font-size: 1.6rem;
   }
+
   @include mq(xl) {
     font-size: 1.8rem;
-  }
-}
-.cover-slide {
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  &--active {
-    opacity: 1;
-    & > * {
-      animation-name: kf-content-slide;
-      animation-duration: 1s;
-      animation-timing-function: ease-in-out;
-    }
-    &::after {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      background-color: $mainred;
-      content: "";
-      animation-name: kf-cover-slide;
-      animation-duration: 1s;
-      animation-timing-function: ease-in-out;
-    }
   }
 }
 
@@ -255,10 +226,12 @@ button {
   background-color: $darkgray;
   transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98), opacity 0.5s,
     visibility 0.5s;
+
   @include rc() {
     transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98),
       opacity 0.5s, visibility 0.5s !important;
   }
+
   @include mq(md) {
     width: 60px;
     height: 60px;
@@ -277,6 +250,7 @@ button {
     height: 12px;
     border-top: solid 2px $white;
     border-right: solid 2px $white;
+
     @include mq(md) {
       width: 16px;
       height: 16px;
@@ -299,12 +273,14 @@ button {
     background-color: $mainred;
     content: "";
     transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98);
-    transform-origin: right;
     @include rc() {
       transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98) !important;
     }
+
+    transform-origin: right;
   }
 }
+
 // =============================
 // header
 // =============================
@@ -314,13 +290,12 @@ button {
   left: 0;
   z-index: 50;
   background-color: $white;
-
-  filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.3));
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 64px;
+
     @include mq(lg) {
       height: 80px;
     }
@@ -336,12 +311,12 @@ button {
     width: 100%;
     padding: 0 4% 56px;
     background-color: $white;
-    transition: transform 0.3s ease, opacity 0.3s,
-      visibility 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s, visibility 0.3s;
+
     @include rc() {
-      transition: transform 0.3s ease,
-        opacity 0.3s, visibility 0.3s !important;
+      transition: transform 0.3s ease, opacity 0.3s, visibility 0.3s !important;
     }
+
     @include mq(md) {
       visibility: visible;
       opacity: 1;
@@ -364,6 +339,7 @@ button {
     align-items: center;
     font-weight: bold;
     font-size: 1.6rem;
+
     @include mq(md) {
       flex-direction: row;
       font-size: 1.4rem;
@@ -381,6 +357,7 @@ button {
       width: auto;
       border: none;
     }
+
     &:first-of-type {
       border-top: solid 1px $lightgray;
     }
@@ -397,9 +374,11 @@ button {
         border-bottom: solid 2px $fontblack;
         content: none;
         transition: border-color 0.3s;
+
         @include rc() {
           transition: border-color 0.3s !important;
         }
+
         @include mq(lg) {
           top: 35px;
           right: 5px;
@@ -422,6 +401,7 @@ button {
     width: 100%;
     height: 64px;
     padding: 0 9px;
+
     @include mq(md) {
       justify-content: center;
       width: auto;
@@ -451,9 +431,11 @@ button {
         border-bottom: solid 2px $fontblack;
         content: none;
         transition: border-color 0.3s;
+
         @include rc() {
           transition: border-color 0.3s !important;
         }
+
         @include mq(md) {
           content: "";
         }
@@ -472,15 +454,22 @@ button {
     visibility: hidden;
     opacity: 0;
     position: fixed;
+    top: 64px;
     left: 0;
     width: 100%;
     background-color: $white;
     transition: opacity 0.3s, visibility 0.3s;
+
     @include rc() {
       transition: opacity 0.3s, visibility 0.3s !important;
     }
+
     @include mq(md) {
       display: block;
+    }
+
+    @include mq(lg) {
+      top: 80px;
     }
   }
   &__nav-service-wrapper {
@@ -493,6 +482,7 @@ button {
     padding: 16px 0;
     text-align: center;
     transition: color 0.3s;
+
     @include rc() {
       transition: color 0.3s !important;
     }
@@ -523,13 +513,14 @@ button {
       background-color: $mainred;
       content: none;
       transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98);
+
       @include rc() {
         transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98) !important;
       }
+
       @include mq(md) {
         content: "";
       }
-
       transform-origin: right;
     }
     &:hover {
@@ -550,9 +541,11 @@ button {
     background-color: $mainred;
     color: $white;
     transition: background-color 0.3s, color 0.3s;
+
     @include rc() {
       transition: background-color 0.3s, color 0.3s !important;
     }
+
     @include mq(md) {
       width: 120px;
       margin-top: 0;
@@ -574,10 +567,11 @@ button {
       background-color: $white;
       content: "";
       transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98);
-      transform-origin: right;
       @include rc() {
         transition: transform 0.3s cubic-bezier(0.61, 0.01, 0.35, 0.98) !important;
       }
+
+      transform-origin: right;
     }
     &:hover {
       color: $mainred;
@@ -598,6 +592,7 @@ button {
     align-items: center;
     width: 24px;
     height: 24px;
+
     @include mq(md) {
       display: none;
     }
@@ -608,11 +603,10 @@ button {
     width: 24px;
     height: 2px;
     background-color: $fontblack;
-    transition: transform 0.3s ease, opacity 0.3s,
-      background-color 0.3s;
+    transition: transform 0.3s ease, opacity 0.3s, background-color 0.3s;
+
     @include rc() {
-      transition: transform 0.3s ease,
-        opacity 0.3s, background-color 0.3s !important;
+      transition: transform 0.3s ease, opacity 0.3s, background-color 0.3s !important;
     }
     &::before,
     &::after {
@@ -621,11 +615,10 @@ button {
       height: 2px;
       background-color: $fontblack;
       content: "";
-      transition: transform 0.3s ease,
-        opacity 0.3s, background-color 0.3s;
+      transition: transform 0.3s ease, opacity 0.3s, background-color 0.3s;
+
       @include rc() {
-        transition: transform 0.3s ease,
-          opacity 0.3s, background-color 0.3s !important;
+        transition: transform 0.3s ease, opacity 0.3s, background-color 0.3s !important;
       }
     }
     &::before {
@@ -655,6 +648,7 @@ button {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     transition: opacity 0.3s, visibility 0.3s;
+
     @include rc() {
       transition: opacity 0.3s, visibility 0.3s !important;
     }
@@ -681,190 +675,187 @@ button {
   position: relative;
   height: 800px;
   min-height: 560px;
-  max-height: 60vh;
+  max-height: 70vh;
   overflow: hidden;
-  @include mq(md) {
-    max-height: 70vh;
-  }
-
-  @include mq(lg) {
-    min-height: 560px;
-  }
-}
-.mainvisual {
-  width: 100%;
-  height: 100%;
-  &__img-wrapper {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-  &__img {
-    width: 100%;
-    height: 100%;
-    transform: scale(1.2);
-    object-fit: cover;
-    &.animation {
-      opacity: 0.3;
-      will-change: transform;
-      &--active {
-        animation-name: kf-mainvisual;
-        animation-duration: 1.5s;
-        animation-fill-mode: forwards;
-      }
-    }
-  }
-}
-.maincopy {
-  position: absolute;
-  bottom: 48px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1240px;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 8%;
-  color: $white;
-  text-align: right;
+  overflow: hidden;
 
   @include mq(md) {
-    bottom: 64px;
+    min-height: 720px;
+    max-height: 80vh;
   }
 
   @include mq(xxl) {
-    padding: 0 20px;
+    margin-left: calc((100vw - 1640px) / 2);
   }
+  &__bg {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+    height: 1600px;
+    border-radius: 50%;
+    background-color: $white;
+  }
+}
+.maincopy {
   &__inner {
-    display: inline-block;
+    position: absolute;
+    top: 64px;
+    margin-left: 4%;
+    @include mq(md) {
+      top: 80px;
+    }
+
+    @include mq(xxl) {
+      margin-left: 100px;
+    }
+  }
+  &__title-wrapper {
+    position: relative;
+    z-index: 10;
   }
   &__title {
+    display: inline-block;
     font-weight: bold;
-    font-size: 2.4rem;
-    line-height: 1;
-    @include mq(lg) {
-      font-size: 3.6rem;
+    font-size: 4.8rem;
+    line-height: 1.53;
+    @include mq(xs) {
+      font-size: 4rem;
     }
 
-    filter: drop-shadow($drop-shadow);
-    & .sm-block {
-      display: block;
-      padding-bottom: 8px;
-      text-align: left;
-
-      @include mq(md) {
-        display: inline-block;
-        margin-bottom: 0;
-      }
+    @include mq(md) {
+      font-size: 5.6rem;
+      line-height: 1.47;
     }
-    & .translate-y {
-      display: inline-block;
-      transform: translateY(5px);
-    }
-    & .underline-red {
-      position: relative;
-      margin-right: 4px;
-      font-size: 5.4rem;
-      @include mq(xs) {
-        font-size: 5rem;
-      }
-
-      @include mq(lg) {
-        margin-right: 8px;
-        font-size: 8.1rem;
-      }
-      &.letter-spacing {
-        margin-right: 16px;
-        letter-spacing: -0.1em;
-        @include mq(xs) {
-          margin-right: 8px;
-        }
-        &::before {
-          transform: translateX(4px);
-        }
-      }
-      &::before {
-        position: absolute;
-        bottom: 0;
-        left: 1%;
-        z-index: -1;
-        height: 16px;
-        background-color: $mainred;
-        content: "";
-        @include mq(lg) {
-          height: 24px;
-        }
-      }
-      &.animation {
-        display: inline-block;
-        &--active {
-          animation-name: kf-title-up;
-          animation-duration: 1s;
-          animation-timing-function: ease;
-          &::before {
-            animation-name: kf-border-slide;
-            animation-duration: 1s;
-            animation-delay: 1s;
-            animation-fill-mode: forwards;
-          }
-        }
-      }
+  }
+  &__bg {
+    padding: 8px 8px 8px 0;
+    background-color: $white;
+  }
+  &__red {
+    color: $mainred;
+  }
+  &__title-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: calc(100% + 5%);
+    background-color: $mainred;
+    @include mq(xxl) {
+      width: calc(100% + ((100vw - 1240px) / 2));
     }
   }
   &__sub-title {
-    margin-top: 24px;
+    display: inline-block;
+    left: 300px;
+    margin: 24px 0 0 4px;
+    padding: 8px 8px 8px 0;
     font-weight: 500;
     font-size: 1.4rem;
-    text-align: left;
-    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 1));
     @include mq(xs) {
       font-size: 1.2rem;
     }
+
     @include mq(md) {
-      filter: drop-shadow($drop-shadow);
-    }    
-    @include mq(lg) {
       font-size: 1.6rem;
     }
-
   }
-  & .md-button-wrapper {
-    width: 100%;
-    max-width: 320px;
-
+  &__button-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 1640px;
+    max-width: 100%;
+    height: 100%;
+    padding: 0 4% 32px;
+    font-weight: bold;
+    font-size: 1.6rem;
     @include mq(md) {
-      max-width: none;
-    }
-  }
-  & .md-button {
-    width: 100%;
-    border: solid 1px $white;
-
-    @include mq(md) {
-      width: auto;
+      padding: 0 4% 48px;
     }
 
     @include mq(xxl) {
-      width: 400px;
+      padding: 0 100px 48px;
     }
   }
-  & .md-button-link {
-    width: 100%;
+  &__button {
+    display: block;
+    width: 325px;
+    margin: 0 0 0 auto;
+    padding: 16px 24px;
+    background-color: $white;
+    color: $fontblack;
     font-size: 1.4rem;
+    text-align: center;
+    transition: color 0.3s;
     @include mq(xs) {
-      font-size: 1.2rem;
+      width: 300px;
+      padding: 16px 8px;
     }
 
     @include mq(md) {
-      width: 320px;
-    }
-
-    @include mq(xxl) {
-      width: 400px;
+      width: 380px;
+      padding: 24px 32px;
       font-size: 1.6rem;
     }
+
+    @include rc() {
+      transition: color 0.3s !important;
+    }
+    &:not(:first-of-type) {
+      margin-top: 8px;
+
+      @include mq(md) {
+        margin-top: 16px;
+      }
+    }
+    &:hover {
+      color: $white;
+    }
+    & .link-arrow {
+      &::after {
+        border-color: $fontblack;
+      }
+    }
   }
-  & .md-button {
-    filter: drop-shadow($drop-shadow);
+}
+.mainvisual {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20%;
+  z-index: -1;
+  width: calc(100% - 20%);
+  padding-right: 2%;
+
+  @include mq(xs) {
+    padding: 0;
+  }
+
+  @include mq(md) {
+    left: 200px;
+    width: calc(100% - 200px);
+  }
+
+  @include mq(xxl) {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  &__img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  &__img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: 55%;
   }
 }
 // =============================
@@ -872,70 +863,80 @@ button {
 // =============================
 .feature {
   position: relative;
-  padding-top: 160px;
+  margin-top: 80px;
   overflow: hidden;
-  @include mq(md) {
-    padding-top: 80px;
-  }
-
-  @include mq(xxl) {
-    padding-top: 120px;
+  &__inner {
+    @include mq(md) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
   &__content {
-    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     @include mq(md) {
-      max-width: 55%;
-      margin-right: 100px;
+      max-width: 50%;
     }
+  }
+  &__img-container {
+    display: flex;
+    flex-basis: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 540px;
+    margin: 48px auto 0;
 
-    @include mq(lg) {
-      max-width: 43%;
-    }
-
-    @include mq(xxl) {
-      max-width: 550px;
+    @include mq(md) {
+      align-items: flex-end;
+      margin: 0;
     }
   }
   &__img-wrapper {
-    position: absolute;
-    top: 40px;
-    right: 0;
-    z-index: -1;
-    width: 57%;
+    position: relative;
+    width: 75%;
+    max-width: 400px;
+
     @include mq(md) {
-      width: 42%;
+      max-width: 320px;
     }
 
     @include mq(lg) {
-      width: 50%;
-      height: calc(100% - 72px);
+      width: 80%;
+      max-width: 400px;
     }
 
-    @include mq(xxl) {
-      top: 80px;
-      height: calc(100% - 112px);
+    @include mq(xl) {
+      width: 85%;
     }
     &::before {
-      position: absolute;
-      top: 8px;
-      left: -8px;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      border: solid 2px $mainred;
+      display: block;
+      padding-top: 50%;
       content: "";
     }
-    &::after {
-      display: block;
-      padding-top: 56.25%;
-      content: "";
+    &:first-of-type {
+      align-self: flex-start;
+
       @include mq(md) {
-        padding-top: 75%;
+        align-self: auto;
+        transform: translateX(-40px);
       }
 
       @include mq(lg) {
-        content: none;
+        transform: translateX(-80px);
+      }
+
+      @include mq(xl) {
+        transform: translateX(-120px);
+      }
+    }
+    &:last-of-type {
+      align-self: flex-end;
+      margin-top: 24px;
+      @include mq(md) {
+        align-self: auto;
       }
     }
   }
@@ -947,17 +948,18 @@ button {
     left: 0;
     width: 100%;
     height: 100%;
-    @include mq(lg) {
-      height: 100%;
-    }
 
     object-fit: cover;
   }
   & .md-button-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 48px;
-    
+    margin-top: 32px;
+
+    @include mq(md) {
+      margin-top: 48px;
+    }
+
     @include mq(lg) {
       justify-content: flex-start;
     }
@@ -973,13 +975,15 @@ button {
   @include mq(xxl) {
     margin-top: 120px;
   }
+
   &__bg {
     position: relative;
     margin-right: 3%;
     background-color: $lightgray;
+
     @include mq(xxl) {
-      margin-right: calc((100vw - 1440px) / 2);
-      padding-left: calc((100vw - 1440px) / 2);
+      margin-right: calc((100vw - 1640px) / 2);
+      padding-left: calc((100vw - 1640px) / 2);
     }
     &::before {
       position: absolute;
@@ -989,6 +993,7 @@ button {
       height: 64px;
       background-color: $white;
       content: "";
+
       @include mq(lg) {
         height: 80px;
       }
@@ -1001,6 +1006,7 @@ button {
       height: 24px;
       background-color: $white;
       content: "";
+
       @include mq(lg) {
         height: 32px;
       }
@@ -1028,12 +1034,13 @@ button {
     }
 
     @include lhCrop;
-    @include mq(md) {
+
+    @include mq(lg) {
       margin-top: 64px;
+      font-size: 3.6rem;
     }
 
     @include mq(lg) {
-      font-size: 3.6rem;
     }
   }
   & .title-underline {
@@ -1048,54 +1055,20 @@ button {
       height: 2px;
       background-color: $mainred;
       content: "";
+
       @include mq(lg) {
         bottom: -16px;
         height: 4px;
       }
     }
   }
-  & .system,
-  & .training {
-    position: relative;
-    &::after {
-      opacity: 0.7;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      z-index: -1;
-      transform: translateY(-50%);
-      color: $white;
-      font-weight: bold;
-      font-size: 7rem;
-      @include mq(xs) {
-        font-size: 5.4rem;
-      }
-
-      @include mq(md) {
-        font-size: 12rem;
-      }
-
-      @include mq(lg) {
-        font-size: 18.5rem;
-      }
-    }
-  }
-  & .system {
-    &::after {
-      content: "SYSTEM";
-    }
-  }
-  & .training {
-    &::after {
-      content: "TRAINING";
-    }
-  }
   &__list {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 32px auto 0;
+
     @include mq(md) {
       flex-direction: row;
     }
@@ -1117,7 +1090,8 @@ button {
     display: flex;
     position: relative;
     width: 100%;
-    color: $white;
+    color: $fontblack;
+
     @include mq(md) {
       max-width: 48%;
     }
@@ -1131,35 +1105,71 @@ button {
     &.bft-dojo {
       flex-basis: 100%;
       max-width: none;
+      margin: 0 auto;
 
       @include mq(lg) {
         flex-basis: 31.2%;
+        margin: 0;
       }
+
       &:not(:first-of-type) {
-        margin-top: 24px;
+        margin-top: 40px;
 
         @include mq(lg) {
           margin: 0;
         }
       }
     }
-    &::before {
-      opacity: 0.4;
-      position: absolute;
-      bottom: -8px;
-      left: -8px;
-      z-index: -1;
-      width: 100%;
-      height: 100%;
-      background-color: $mainred;
-      content: "";
-    }
   }
   &__link {
     display: block;
     width: 100%;
-    padding: 32px 24px;
-    background-color: rgba(48, 47, 59, 0.8);
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      transform: scaleX(1);
+      border-bottom: solid 1px $darkgray;
+      content: "";
+      transition: transform 0.3s ease;
+      @include rc() {
+        transition: transform 0.3s ease !important;
+      }
+
+      transform-origin: left;
+    }
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      border-bottom: solid 1px $mainred;
+      content: "";
+      transition: transform 0.3s ease;
+
+      @include rc() {
+        transition: transform 0.3s ease !important;
+      }
+
+      transform-origin: right;
+    }
+    &:hover {
+      &::before {
+        transform: scaleX(0);
+
+        transform-origin: right;
+      }
+      &::after {
+        transform: scaleX(1);
+
+        transform-origin: left;
+      }
+    }
     &.bft-dojo {
       & .service__item-title {
         height: 25px;
@@ -1172,62 +1182,40 @@ button {
     &:hover {
       & .service__item-title {
         &::after {
-          border-color: $mainred;
           transform: translateX(8px) rotate(-45deg);
+          border-color: $mainred;
         }
       }
     }
+  }
+  &__item-text-wrapper {
+    position: relative;
   }
   &__item-title {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    margin: 32px 0 0 0;
     font-weight: bold;
     font-size: 2rem;
     line-height: 1;
+
     @include mq(md) {
       font-size: 2.4rem;
     }
+    &.system {
+      justify-content: left;
+      position: absolute;
+      top: -36px;
+      width: 40%;
+      min-width: 220px;
+      margin: 0;
+      padding: 16px 8px 0;
+      background-color: $lightgray;
 
-    @include mq(lg) {
-      justify-content: flex-start;
-    }
-    &.icon_01,
-    &.icon_02 {
-      @include mq(lg) {
-        padding-left: 32px;
-      }
-      &::before {
-        display: block;
-        width: 20px;
-        height: 20px;
-        margin-right: 8px;
-        background-size: cover;
-        content: "";
-        @include mq(md) {
-          width: 24px;
-          height: 24px;
-          margin-right: 16px;
-        }
-
-        @include mq(lg) {
-          position: absolute;
-          top: 50%;
-          left: 0;
-          transform: translateY(-50%);
-          margin-right: 0;
-        }
-      }
-    }
-    &.icon_01 {
-      &::before {
-        background-image: url(../img/icon_01.png);
-      }
-    }
-    &.icon_02 {
-      &::before {
-        background-image: url(../img/icon_02.png);
+      @include mq(md) {
+        top: -40px;
       }
     }
     &::after {
@@ -1236,72 +1224,124 @@ button {
       width: 8px;
       height: 8px;
       margin-left: 8px;
-      border-right: solid 2px $white;
-      border-bottom: solid 2px $white;
+      border-right: solid 2px $darkgray;
+      border-bottom: solid 2px $darkgray;
       content: "";
       transition: transform 0.3s, border-color 0.3s;
+
       @include rc() {
         transition: transform 0.3s, border-color 0.3s !important;
       }
+
       @include mq(md) {
         width: 12px;
         height: 12px;
         margin-left: 16px;
-        border-right: solid 4px $white;
-        border-bottom: solid 4px $white;
+        border-right: solid 4px $darkgray;
+        border-bottom: solid 4px $darkgray;
       }
+    }
+  }
+  &__item-img-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    &::after {
+      display: block;
+      padding-top: 50%;
+      content: "";
+    }
+  }
+  &__item-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    @include rc() {
+      transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
+    }
+
+    object-fit: cover;
+    .service__link:hover & {
+      transform: scale(1.1);
     }
   }
   &__title-img {
     height: 100%;
+
     @include mq(md) {
       width: auto;
     }
-
     object-fit: cover;
   }
   &__sub-title {
-    margin: 24px 0 0 0;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    min-width: 265px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    background-color: $darkgray;
+    color: $white;
     font-weight: bold;
     font-size: 1.6rem;
     line-height: 1;
-    text-decoration: underline;
+    text-align: center;
     text-align: center;
     @include mq(md) {
-      margin: 32px 0 0 0;
       font-size: 2.4rem;
     }
 
     @include mq(lg) {
-      margin: 40px 0 0 0;
-      text-align: left;
+      width: 85%;
     }
 
     text-underline-offset: 4px;
+    &::after {
+      position: absolute;
+      bottom: -11px;
+      transform: rotate(-45deg);
+      width: 24px;
+      height: 24px;
+      border-right: solid 24px transparent;
+      border-bottom: solid 24px $darkgray;
+      content: "";
+    }
+  }
+  &__item-icon {
+    display: block;
+    height: 140px;
+    margin: 24px auto 0;
   }
   &__item-text {
     flex-basis: 100%;
-    margin-top: 16px;
+    padding: 16px 8px 32px;
     font-size: 1.4rem;
 
     @include lhCrop;
+
     @include mq(xs) {
       font-size: 1.2rem;
     }
 
     @include mq(md) {
-      margin-top: 24px;
+      padding-top: 24px;
       font-size: 1.6rem;
     }
   }
   & .md-button-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 48px;
     padding-left: 4%;
 
     @include mq(md) {
-      margin-top: 96px;
+      margin-top: 64px;
     }
 
     @include mq(xxl) {
@@ -1318,13 +1358,15 @@ button {
   @include mq(xxl) {
     margin-top: 120px;
   }
+
   &__bg {
     position: relative;
     margin-left: 3%;
     background-color: $lightgray;
+
     @include mq(xxl) {
-      margin-left: calc((100vw - 1440px) / 2);
-      padding-right: calc((100vw - 1440px) / 2);
+      margin-left: calc((100vw - 1640px) / 2);
+      padding-right: calc((100vw - 1640px) / 2);
     }
     &::before {
       position: absolute;
@@ -1334,6 +1376,7 @@ button {
       height: 64px;
       background-color: $white;
       content: "";
+
       @include mq(lg) {
         height: 80px;
       }
@@ -1346,6 +1389,7 @@ button {
       height: 24px;
       background-color: $white;
       content: "";
+
       @include mq(lg) {
         height: 32px;
       }
@@ -1385,6 +1429,7 @@ button {
     align-items: center;
     position: relative;
     transition: opacity 0.3s;
+
     @include rc() {
       transition: opacity 0.3s !important;
     }
@@ -1398,6 +1443,7 @@ button {
       border-bottom: solid 4px $mainred;
       content: "";
       transition: border-color 0.3s;
+
       @include rc() {
         transition: border-color 0.3s !important;
       }
@@ -1418,6 +1464,7 @@ button {
     max-width: 1240px;
     margin: 24px auto 0;
     padding: 0 20px;
+
     @include mq(md) {
       flex-direction: row;
       margin: 32px auto 0;
@@ -1425,8 +1472,8 @@ button {
   }
   &__item {
     flex-basis: 30%;
+    position: relative;
     margin: 0 4%;
-    overflow: hidden;
     &:not(:first-of-type) {
       margin-top: 24px;
     }
@@ -1436,21 +1483,60 @@ button {
         margin: 0;
       }
     }
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(1);
+      border-bottom: solid 1px $darkgray;
+      content: "";
+      transition: transform 0.3s ease;
+
+      @include rc() {
+        transition: transform 0.3s ease !important;
+      }
+
+      transform-origin: left;
+    }
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      border-bottom: solid 1px $mainred;
+      content: "";
+      transition: transform 0.3s ease;
+      @include rc() {
+        transition: transform 0.3s ease !important;
+      }
+
+      transform-origin: right;
+      backface-visibility: hidden;
+    }
+    &:hover {
+      &::before {
+        transform: scaleX(0);
+
+        transform-origin: right;
+      }
+      &::after {
+        transform: scaleX(1);
+
+        transform-origin: left;
+      }
+    }
   }
   &__item-link {
+    display: block;
+    position: relative;
+    z-index: 10;
     &:hover {
       & .case__item-img {
         transform: scale(1.1);
-      }
-      & .case__item-text-wrapper {
-        &::before {
-          transform: scaleX(0);
-          transform-origin: right;
-        }
-        &::after {
-          transform: scaleX(1);
-          transform-origin: left;
-        }
       }
     }
   }
@@ -1469,67 +1555,37 @@ button {
     width: 100%;
     height: 100%;
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    object-fit: cover;
     @include rc() {
       transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) !important;
     }
+
+    object-fit: cover;
   }
   &__item-text-wrapper {
-    padding: 16px;
     position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-bottom: solid 1px $darkgray;
-      transform: scaleX(1);
-      transform-origin: left;
-      transition: transform .3s ease;
-      @include rc() {
-        transition: transform .3s ease !important;
-      }
-    }
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-bottom: solid 1px $mainred;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform .3s ease;
-      @include rc() {
-        transition: transform .3s ease !important;
-      }
-    }
+    padding: 16px;
   }
   &__item-tag {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    width: 80%;
-    min-width: 180px;
-    height: 40px;
-    background-color: $lightgray;
     display: flex;
-    align-items: center;
     justify-content: left;
-    font-size: 1.4rem;
+    align-items: center;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 40%;
+    min-width: 180px;
+    padding: 8px 0 0 32px;
+    background-color: $lightgray;
     font-weight: bold;
-    padding: 0 16px;
+    font-size: 1.4rem;
     &::after {
       position: absolute;
-      content: '';
-      left: 4px;
+      left: 20px;
       width: 4px;
       height: 30%;
       background-color: $darkgray;
-      transition: background-color .3s;
+      content: "";
+      transition: background-color 0.3s;
     }
     .case__item-link:hover & {
       &::after {
@@ -1546,7 +1602,6 @@ button {
     &::after {
       display: inline-block;
       transform: translateY(-25%) rotate(-45deg);
-
       width: 8px;
       height: 8px;
       margin-left: 8px;
@@ -1571,10 +1626,11 @@ button {
 // =============================
 .company {
   position: relative;
-  max-width: 1440px;
+  max-width: 1640px;
   margin: 80px auto 0;
   overflow: hidden;
   background-color: $lightgray;
+
   @include mq(xxl) {
     margin-top: 120px;
   }
@@ -1587,6 +1643,7 @@ button {
     height: 64px;
     background-color: $white;
     content: "";
+
     @include mq(lg) {
       height: 80px;
     }
@@ -1599,6 +1656,7 @@ button {
     height: 32px;
     background-color: $white;
     content: "";
+
     @include mq(lg) {
       height: 48px;
     }
@@ -1623,6 +1681,7 @@ button {
     left: 0;
     width: 100%;
     height: 47%;
+
     @include mq(md) {
       top: 50%;
       transform: translateY(-50%);
@@ -1658,6 +1717,7 @@ button {
     flex-basis: 100%;
     max-width: 100%;
     padding: 16px 4% 0;
+
     @include mq(md) {
       flex-basis: 50%;
       max-width: 50%;
@@ -1705,7 +1765,6 @@ button {
   }
   &__item {
     margin-right: 4%;
-
     border-bottom: solid 1px $fontblack;
     &:first-child {
       border-top: solid 1px $fontblack;
@@ -1720,6 +1779,7 @@ button {
     font-weight: bold;
     font-size: 1.6rem;
     transition: opacity 0.3s;
+
     @include rc() {
       transition: opacity 0.3s !important;
     }
@@ -1733,6 +1793,7 @@ button {
       border-bottom: solid 4px $fontblack;
       content: "";
       transition: border-color 0.3s;
+
       @include rc() {
         transition: border-color 0.3s !important;
       }
@@ -1748,24 +1809,25 @@ button {
     &.company__contact {
       display: block;
       margin: 0 auto;
-      background-color: $darkgray;
       border: solid 1px $mainred;
-      &::before {
-        background-color: $white;
-      }
+      background-color: $darkgray;
       @include mq(md) {
         margin: 24px auto 0;
+      }
+      &::before {
+        background-color: $white;
       }
       & .md-button-link {
         width: 320px;
         height: 64px;
-        font-size: 1.6rem;
-        transition: color .3s;
         background-color: $mainred;
+        font-size: 1.6rem;
+        transition: color 0.3s;
         @include mq(md) {
           width: 400px;
           font-size: 2rem;
         }
+
         @include mq(lg) {
           width: 480px;
           height: 80px;
@@ -1777,6 +1839,7 @@ button {
           height: 8px;
           border-right: solid 2px $white;
           border-bottom: solid 2px $white;
+
           @include mq(md) {
             width: 12px;
             height: 12px;
@@ -1818,6 +1881,7 @@ button {
   @include mq(xxl) {
     margin-top: 120px;
   }
+
   &__inner {
     display: flex;
     flex-direction: column-reverse;
@@ -1830,27 +1894,28 @@ button {
     display: flex;
     flex-basis: 50%;
     justify-content: center;
-    margin-top: 64px;
+    margin-top: 80px;
+
     @include mq(md) {
-      margin-top: 48px;
+      margin-top: 32px;
     }
 
     @include mq(lg) {
-      margin-top: 32px;
+      margin-top: 48px;
     }
   }
   &__img-wrapper {
     position: relative;
+    z-index: 10;
     width: 100%;
     overflow: hidden;
-    z-index: 10;
+    @include mq(md) {
+      max-width: 320px;
+    }
     &::before {
       display: block;
       padding-top: 200%;
       content: "";
-    }
-    @include mq(md) {
-      max-width: 320px;
     }
   }
   &__img-border {
@@ -1859,13 +1924,14 @@ button {
     max-width: 240px;
 
     @include mq(md) {
-      max-width: none;
+      max-width: 320px;
     }
+
     &:first-of-type {
-      transform: translateY(16px);
       margin-right: 24px;
+
       @include mq(md) {
-        transform: translateY(24px);
+        margin-right: 32px;
       }
 
       @include mq(lg) {
@@ -1873,7 +1939,7 @@ button {
       }
     }
     &:last-of-type {
-      transform: translateY(-32px);
+      transform: translateY(-48px);
 
       @include mq(lg) {
         transform: translateY(-64px);
@@ -1937,6 +2003,7 @@ button {
     @include mq(lg) {
       font-size: 3.6rem;
     }
+
     & .border-red {
       position: relative;
       letter-spacing: 0;
@@ -1954,33 +2021,19 @@ button {
           margin-left: 0.15em;
         }
       }
-      &::after {
+      &::before {
         position: absolute;
-        bottom: 2px;
+        right: 0;
+        bottom: 0;
         left: 0;
         z-index: -1;
         height: 6px;
         background-color: $mainred;
         content: "";
+
         @include mq(xl) {
-          bottom: 4px;
+          bottom: 0;
           height: 8px;
-        }
-      }
-      &.animation {
-        &--active {
-          &::after {
-            animation-name: kf-border-slide;
-            animation-duration: 0.6s;
-            animation-fill-mode: forwards;
-          }
-        }
-      }
-      @for $i from 1 through 3 {
-        &:nth-child(#{$i}) {
-          &::after {
-            animation-delay: $i * 0.2s;
-          }
         }
       }
     }
@@ -1989,7 +2042,9 @@ button {
     max-width: 550px;
     margin-top: 16px;
     font-size: 1.6rem;
+
     @include lhCrop;
+
     @include mq(md) {
       margin-top: 24px;
     }
@@ -1999,6 +2054,7 @@ button {
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+
     @include mq(md) {
       display: block;
       margin-top: 48px;
@@ -2034,9 +2090,11 @@ button {
     padding: 16px 0;
     font-size: 1.6rem;
     transition: opacity 0.3s;
+
     @include rc() {
       transition: opacity 0.3s !important;
     }
+
     @include mq(xs) {
       font-size: 1.4rem;
     }
@@ -2054,6 +2112,7 @@ button {
     flex-basis: 15%;
     min-width: 120px;
     font-size: 1.4rem;
+
     @include mq(lg) {
       font-size: 1.6rem;
     }
@@ -2072,6 +2131,7 @@ button {
 
       text-overflow: ellipsis;
     }
+
     &::after {
       display: inline-block;
       transform: translateY(-1px) rotate(-45deg);
@@ -2082,9 +2142,11 @@ button {
       border-bottom: solid 2px $fontblack;
       content: "";
       transition: border-color 0.3s;
+
       @include rc() {
         transition: border-color 0.3s !important;
       }
+
       @include mq(md) {
         position: absolute;
         top: 50%;
@@ -2108,10 +2170,10 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 40px;
-    
+
     @include mq(md) {
-      margin-top: 64px;
       justify-content: flex-end;
+      margin-top: 64px;
     }
   }
 }
@@ -2124,6 +2186,7 @@ button {
   @include mq(xxl) {
     margin-top: 120px;
   }
+
   & .section-text {
     max-width: 550px;
   }
@@ -2132,6 +2195,7 @@ button {
     justify-content: space-between;
     max-width: 1200px;
     margin: 40px auto 0;
+
     @include mq(lg) {
       margin: 64px auto 0;
     }
@@ -2140,6 +2204,7 @@ button {
     width: 100%;
     margin: 0 4%;
     font-size: 2.4rem;
+
     @include mq(md) {
       display: flex;
       justify-content: space-between;
@@ -2155,9 +2220,11 @@ button {
     display: flex;
     align-items: center;
     transition: opacity 0.3s;
+
     @include rc() {
       transition: opacity 0.3s !important;
     }
+
     @include mq(md) {
       display: block;
     }
@@ -2224,11 +2291,11 @@ button {
 // =============================
 .contact {
   position: relative;
-  margin-top: 80px;
+  margin-top: 60px;
+  padding-bottom: 160px;
   overflow: hidden;
-  background-color: $lightgray;
   @include mq(md) {
-    padding-bottom: 64px;
+    padding-bottom: 240px;
   }
 
   @include mq(xxl) {
@@ -2243,27 +2310,25 @@ button {
     height: 64px;
     background-color: $white;
     content: "";
+
     @include mq(lg) {
-      height: 80px;
+      height: 160px;
     }
   }
   &__img-wrapper {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     width: 100%;
-    height: 47%;
+    height: 70%;
+
     @include mq(md) {
-      top: 51%;
-      left: 50%;
-      transform: translateY(-50%);
-      width: 50%;
       height: 100%;
     }
     &::after {
       opacity: 0.6;
       position: absolute;
-      top: 0;
+      top: 1px;
       left: 0;
       width: 100%;
       height: 100%;
@@ -2285,109 +2350,69 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 32px auto 0;
+    background-color: $darkgray;
+    color: $white;
+
     @include mq(md) {
       flex-direction: row;
     }
   }
   &__text-wrapper {
+    display: flex;
+    flex-direction: column;
     position: relative;
-    padding: 0 4% 32px;
-    &::after {
-      position: absolute;
-      bottom: 0;
-      left: calc(-4% - 2px);
-      width: 100vw;
-      height: 32px;
-      background-color: $lightgray;
-      content: "";
-    }
+    padding: 48px 32px;
     @include mq(md) {
       flex-basis: 50%;
       max-width: 50%;
       min-height: auto;
-      padding: 0 4%;
+      padding: 52px 48px;
       &::after {
         content: none;
       }
     }
-    @include mq(xxl) {
-      padding: 0;
-    }
-  }
-  &__text {
-    font-size: 1.6rem;
-
-    @include lhCrop;
-  }
-  &__phone-wrapper {
-    padding: 32px 4%;
-    color: $white;
-    text-align: center;
-
-    @include mq(md) {
-      flex-basis: 50%;
-      max-width: 50%;
-      padding: 0 0 0 8%;
-      text-align: left;
-    }
-
-    @include mq(xxl) {
-      padding: 0 0 0 100px;
-    }
-  }
-  &__phone-text {
-    font-weight: bold;
-    font-size: 2.4rem;
-    line-height: 1;
-  }
-  &__phone-time {
-    display: inline-block;
-    font-weight: normal;
-    font-size: 1.4rem;
-  }
-  &__office {
-    margin-top: 16px;
-    &:first-of-type {
-      margin-top: 32px;
-    }
-  }
-  &__office-name {
-    font-weight: bold;
-    font-size: 1.6rem;
-  }
-  &__office-number {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 2.4rem;
-    @include mq(md) {
-      justify-content: flex-start;
-      margin-left: 4%;
-      font-size: 3.6rem;
-    }
-    &::before {
-      display: inline-block;
-      width: 12px;
-      height: 18px;
-      margin-right: 8px;
-      background-image: url(../img/phone.png);
-      background-size: cover;
-      content: "";
-      @include mq(md) {
-        width: 16px;
-        height: 24px;
+    &:last-of-type {
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 1px;
+        background-color: $white;
+        content: "";
+        @include mq(md) {
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          width: 1px;
+          width: 1px;
+          height: 60%;
+          height: 60%;
+        }
       }
     }
   }
+  &__title {
+    font-weight: bold;
+    font-size: 2.4rem;
+  }
+  &__text {
+    margin-top: 24px;
+    font-size: 1.6rem;
+    @include lhCrop;
+  }
+  & .md-button-wrapper {
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-end;
+    margin-top: 56px;
+  }
   & .md-button {
     width: 100%;
-
-    @include mq(md) {
-      width: 320px;
-    }
+    border: solid 1px $white;
   }
   & .md-button-link {
     width: 100%;
@@ -2400,6 +2425,7 @@ button {
   padding-top: 32px;
   padding-bottom: 32px;
   background-color: $darkgray;
+
   @include mq(md) {
     padding-top: 48px;
     padding-bottom: 48px;
@@ -2408,6 +2434,7 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     @include mq(md) {
       flex-direction: row;
     }
@@ -2417,6 +2444,7 @@ button {
     flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 24px;
+
     @include mq(md) {
       flex-wrap: nowrap;
       margin-top: 0;
@@ -2436,6 +2464,7 @@ button {
     color: $white;
     font-weight: bold;
     font-size: 1.4rem;
+
     @include mq(md) {
       padding: 0 16px;
     }
@@ -2454,13 +2483,14 @@ button {
       background-color: $white;
       content: none;
       transition: transform 0.3s;
+
       @include rc() {
         transition: transform 0.3s !important;
       }
+
       @include mq(md) {
         content: "";
       }
-
       transform-origin: right;
     }
     &:hover {
@@ -2476,6 +2506,7 @@ button {
   padding: 8px 0;
   font-size: 1.2rem;
   text-align: center;
+
   @include mq(md) {
     font-size: 1.4rem;
   }
