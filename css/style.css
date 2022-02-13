@@ -2261,7 +2261,7 @@ button {
 }
 
 .case__item:not(:first-of-type) {
-  margin-top: 24px;
+  margin-top: 32px;
 }
 
 @media (min-width: 768px) {
