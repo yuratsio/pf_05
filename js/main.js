@@ -58,24 +58,24 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   // =============================
-  // animation
+  // fade-in
   // =============================
-  const animationTargets = document.querySelectorAll('.animation');
-  const animationOptions = {
+  const fadeInTargets = document.querySelectorAll('.js-fade-in');
+  const fadeInOptions = {
     threshold: .3
   };
-  const animationObs = new IntersectionObserver(animation, animationOptions);
+  const fadeInObs = new IntersectionObserver(fadeIn, fadeInOptions);
 
-  animationTargets.forEach(animationTarget => {
-    animationObs.observe(animationTarget);
+  fadeInTargets.forEach(fadeInTarget => {
+    fadeInObs.observe(fadeInTarget);
   });
 
-  function animation(entries, obs) {
+  function fadeIn(entries, obs) {
     entries.forEach(entry => {
       if(!entry.isIntersecting) {
         return;
       };
-      entry.target.classList.add('animation--active');
+      entry.target.classList.add('js-fade-in--active');
       obs.unobserve(entry.target);
     });
   }
