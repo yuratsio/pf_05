@@ -10,9 +10,9 @@
       width: 100%;
       height: 100%;
       background-color: $mainred;
-      transition: transform 0.8s 0.3s cubic-bezier(0.86, 0.01, 0.21, 0.99);
+      transition: transform 1s 0.25s cubic-bezier(0.80, 0.01, 0.20, 0.99);
       @include rc() {
-        transition: transform 0.8s 0.3s cubic-bezier(0.86, 0.01, 0.21, 0.99) !important;
+        transition: transform 1s 0.25s cubic-bezier(0.80, 0.01, 0.20, 0.99) !important;
       }
     }
   }
