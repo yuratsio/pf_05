@@ -60,13 +60,14 @@ button {
   color: $white;
   font-weight: bold;
   font-size: 1.6rem;
-
+  
   @include mq(md) {
     max-width: none;
   }
-
+  
   @include mq(lg) {
     width: 320px;
+    font-size: 2rem;
   }
 
   @include mq(lg) {
@@ -167,18 +168,13 @@ button {
   }
 }
 .section-title {
-  margin-top: 16px;
+  margin-top: 8px;
   font-weight: bold;
   font-size: 3.6rem;
 
   @include lhCrop;
 
-  @include mq(md) {
-    margin-top: 20px;
-  }
-
   @include mq(lg) {
-    margin-top: 24px;
     font-size: 4.8rem;
   }
 }
@@ -975,7 +971,7 @@ button {
   margin-top: 80px;
   overflow: hidden;
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
 
@@ -993,12 +989,12 @@ button {
       top: 0;
       left: 0;
       width: 100%;
-      height: 56px;
+      height: 48px;
       background-color: $white;
       content: "";
 
       @include mq(lg) {
-        height: 80px;
+        height: 64px;
       }
     }
     &::after {
@@ -1358,7 +1354,7 @@ button {
 .case {
   margin-top: 80px;
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
 
@@ -1376,12 +1372,12 @@ button {
       top: 0;
       left: 0;
       width: 100%;
-      height: 56px;
+      height: 48px;
       background-color: $white;
       content: "";
 
       @include mq(lg) {
-        height: 80px;
+        height: 64px;
       }
     }
     &::after {
@@ -1634,7 +1630,7 @@ button {
   overflow: hidden;
   background-color: $lightgray;
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
   &::before {
@@ -1643,12 +1639,12 @@ button {
     left: 0;
     z-index: 5;
     width: 101%;
-    height: 56px;
+    height: 48px;
     background-color: $white;
     content: "";
 
     @include mq(lg) {
-      height: 80px;
+      height: 64px;
     }
   }
   &::after {
@@ -1881,7 +1877,7 @@ button {
 .recruit {
   margin-top: 80px;
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
 
@@ -1942,10 +1938,10 @@ button {
       }
     }
     &:last-of-type {
-      transform: translateY(-48px);
+      transform: translateY(-32px);
 
       @include mq(lg) {
-        transform: translateY(-64px);
+        transform: translateY(-48px);
       }
     }
     &::after {
@@ -1977,11 +1973,15 @@ button {
     }
   }
   &__content {
-    padding: 0 4%;
+    padding: 32px 4% 0;
 
     @include mq(md) {
       flex-basis: 50%;
       padding-left: 40px;
+    }
+
+    @include mq(lg) {
+      padding-top: 48px;
     }
 
     @include mq(xxl) {
@@ -2042,12 +2042,11 @@ button {
     }
   }
   &__content-text {
-    max-width: 550px;
     margin-top: 16px;
     font-size: 1.6rem;
-
+    
     @include lhCrop;
-
+    
     @include mq(md) {
       margin-top: 24px;
     }
@@ -2186,7 +2185,7 @@ button {
 .media {
   margin-top: 80px;
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
 
@@ -2301,7 +2300,7 @@ button {
     padding-bottom: 240px;
   }
 
-  @include mq(xxl) {
+  @include mq(xl) {
     margin-top: 120px;
   }
   &::before {
@@ -2341,9 +2340,14 @@ button {
   }
   &__img {
     width: 100%;
-    height: 100%;
-
+    height: 115%;
+    
     object-fit: cover;
+    object-position: 40%;
+    @include mq(md) {
+      height: 100%;
+      object-position: center;
+    }
   }
   &__inner {
     position: relative;
